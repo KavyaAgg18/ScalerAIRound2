@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+.venv/
+__pycache__/
+*.db
+*.db-*
+test-results/
+playwright-report/
+frontend/e2e/screenshots/
+backend.zip
+token.txt
+*.pem
+.env
