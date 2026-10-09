@@ -1,0 +1,12 @@
+# Automatic HTTPS (Let's Encrypt) in front of the app container.
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy app:8000
+}
+
+# Anyone who reaches the server some other way over plain HTTP (bare IP, the EC2
+# public hostname) gets sent to the real domain. Let's Encrypt won't issue certificates
+# for IP addresses or *.amazonaws.com names, so those can't be served over HTTPS directly.
+http:// {
+	redir https://{$DOMAIN}{uri} permanent
+}
