@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+}
+
+/* Console top bar stays pinned like the AWS console header. */
+#top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1002;
+}
+
+.full-page-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sign-in page (AWS sign-in is outside the console shell). */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 16px;
+  background: #f2f3f3;
+}
+
+.awsui-dark-mode .login-page {
+  background: #0f1b2a;
+}
+
+.login-logo {
+  background: #232f3e;
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-bottom: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Top bar search with the [Alt+S] hint on the right. */
+.console-search-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.console-search {
+  position: relative;
+  flex: 1;
+}
+
+.console-search-hint {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #8d99a8;
+  pointer-events: none;
+}
+
+/* Console footer, pinned to the bottom like the real one. */
+#console-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  height: 32px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #0f141a;
+  color: #d1d5db;
+  font-family: "Open Sans", "Helvetica Neue", Roboto, Arial, sans-serif;
+  font-size: 12px;
+}
+
+.console-footer-left,
+.console-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.console-footer-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.console-footer-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .console-footer-right span {
+    display: none;
+  }
+}
+
+/* Record values in tables: one value per line, like the console. */
+.values-cell {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* Name server list in the zone details panel. */
+.plain-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* Records filter bar: text filter plus Type / Routing policy / Alias dropdowns on one line. */
+.records-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.records-filter-text {
+  flex: 1 1 360px;
+  max-width: 600px;
+}
+
+/* TTL input stretches; the 1m / 1h / 1d buttons sit to its right. */
+.ttl-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ttl-input {
+  flex: 1;
+}
+
+/* "Public" / "Private" badge before the zone name in the page title. */
+.zone-type-badge {
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
