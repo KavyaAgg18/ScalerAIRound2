@@ -216,8 +216,54 @@ export function ConsoleSearch() {
         placeholder="Search"
         ariaLabel="Search hosted zones"
       />
-      {!value && <span className="console-search-hint">[Alt+S]</span>}
+      <span className="console-search-hint">
+        {!value && "[Alt+S]"}
+        {hexIcon}
+      </span>
     </div>
+  );
+}
+
+// Outline hexagon, as at the right end of the console search box.
+const hexIcon = (
+  <svg viewBox="0 0 16 16" width="14" height="14" focusable="false" aria-hidden="true">
+    <path
+      d="M8 1.5 13.6 4.75v6.5L8 14.5 2.4 11.25v-6.5Z"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+    />
+    <path d="M8 5.2 10.4 6.6v2.8L8 10.8 5.6 9.4V6.6Z" fill="currentColor" />
+  </svg>
+);
+
+// Purple Amazon Q tile shown between the logo and the services menu.
+const amazonQIcon = (
+  <svg viewBox="0 0 24 24" width="24" height="24" focusable="false" aria-hidden="true">
+    <defs>
+      <linearGradient id="amazon-q-bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#7b3ff2" />
+        <stop offset="1" stopColor="#4d27c9" />
+      </linearGradient>
+    </defs>
+    <rect width="24" height="24" rx="5" fill="url(#amazon-q-bg)" />
+    <path d="M12 4.5 18.3 8.1v7.3L12 19 5.7 15.4V8.1Z" fill="none" stroke="#fff" strokeWidth="1.8" />
+    <path d="M12 9 14.6 10.5v3L12 15l-2.6-1.5v-3Z" fill="#fff" />
+  </svg>
+);
+
+function AmazonQButton() {
+  const comingSoon = useComingSoon();
+  return (
+    <button
+      type="button"
+      className="console-q"
+      aria-label="Amazon Q"
+      title="Amazon Q"
+      onClick={() => comingSoon("Amazon Q")}
+    >
+      {amazonQIcon}
+    </button>
   );
 }
 
@@ -276,6 +322,9 @@ function TopBar({ account, onShowShortcuts }: { account: Account; onShowShortcut
         identity={{ href: "/", logo: { src: "/aws-logo.svg", alt: "AWS" }, onFollow: follow }}
         search={
           <div className="console-search-row">
+            <span className="console-divider" />
+            <AmazonQButton />
+            <span className="console-divider" />
             <ServicesMenu />
             <ConsoleSearch />
           </div>

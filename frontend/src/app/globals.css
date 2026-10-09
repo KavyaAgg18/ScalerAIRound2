@@ -42,25 +42,74 @@ body {
   max-width: 420px;
 }
 
-/* Top bar search with the [Alt+S] hint on the right. */
+/* Top bar: logo | Amazon Q | services grid, then a left-aligned search box, like the console.
+   Cloudscape centers the search, so its layout boxes are adjusted here. */
+#top-nav [class*="awsui_padding-box_"] {
+  padding-inline-start: 18px !important;
+}
+
+#top-nav [class*="awsui_logo_"] {
+  block-size: 22px !important;
+  inline-size: auto !important;
+  margin-inline-end: 0 !important;
+}
+
+#top-nav [class*="awsui_inputs_"] {
+  justify-content: flex-start !important;
+  padding-inline-start: 0 !important;
+}
+
+#top-nav [class*="awsui_search_"] {
+  inline-size: auto !important;
+  max-inline-size: none !important;
+}
+
 .console-search-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+}
+
+.console-divider {
+  width: 1px;
+  height: 28px;
+  margin: 0 12px 0 16px;
+  background: #424650;
+}
+
+.console-q {
+  display: flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.console-search-row > [class*="awsui_button-dropdown_"] {
+  margin: 0 12px 0 -4px;
 }
 
 .console-search {
   position: relative;
-  flex: 1;
+  /* Room left by the utilities on the right; 562px wide on wide windows, as in the console. */
+  width: clamp(160px, calc(100vw - 840px), 562px);
+}
+
+#top-nav .console-search input {
+  height: 28px;
+  border-color: #8c8c94;
+  border-radius: 8px;
 }
 
 .console-search-hint {
   position: absolute;
-  right: 12px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 12px;
-  color: #8d99a8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #c6c6cd;
   pointer-events: none;
 }
 
